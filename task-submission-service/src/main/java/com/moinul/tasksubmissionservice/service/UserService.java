@@ -1,0 +1,15 @@
+package com.moinul.tasksubmissionservice.service;
+
+import com.moinul.tasksubmissionservice.modal.UserDto;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
+
+
+
+@FeignClient(name="Task-Management", url="http://localhost:5001/")
+public interface UserService {
+
+    @GetMapping("/api/users/profile")
+    public UserDto getUserProfile(@RequestHeader("Authorization") String jwt);
+}
